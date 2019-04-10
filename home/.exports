@@ -3,6 +3,8 @@
 # GOPATH
 export GOPATH=$HOME/go
 
+export PATH=~/go/bin:$PATH
+
 # Make vim the default editor
 export EDITOR=/usr/bin/vim;
 
