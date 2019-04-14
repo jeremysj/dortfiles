@@ -2,7 +2,6 @@
 
 # Go
 export GOPATH=$HOME/go
-=======
 # GOPATH
 export GOPATH=$HOME/go
 export PATH=~/go/bin:$PATH
