@@ -16,11 +16,11 @@ font pango:Monospace 13
 
 # HiDPI for sway
 output eDP-1 scale 2
-#output eDP-1 pos 0 0 res 3200x1800
-#output DP-1 pos 1600 0 res 1920x1200
+output eDP-1 pos 0 0 res 3200x1800
+output DP-1 pos 1800 0 res 1920x1200
 
 # Inputs for sway
-# Reverse scroll
+#Reverse scroll
 #input "2:7:SynPS/2_Synaptics_TouchPad" {
 #    natural_scroll enabled
 #    left_handed disabled
