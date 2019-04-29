@@ -4,7 +4,7 @@
 
 set $mod Mod4
 set $term terminator
-#set $menu i3-menu-desktop
+set $menu dmenu
 set $barcmd swaybar
 set $lockcmd swaylock
 
@@ -12,10 +12,10 @@ set $lockcmd swaylock
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Monospace 13
+font pango:Monospace 12
 
 # HiDPI for sway
-output eDP-1 scale 2
+#output eDP-1 scale 2
 #output eDP-1 pos 0 0 res 3200x1800
 #output DP-1 pos 1600 0 res 1920x1200
 
@@ -26,16 +26,16 @@ output eDP-1 scale 2
 #    left_handed disabled
 #    pointer_accel 0.9
 #}
-input "1739:30383:DLL075B:01_06CB:76AF_To" {
-     natural_scroll enabled
-     left_handed disabled
-     pointer_accel 0.5
-     tap enabled
-     accel_profile adaptive
-     dwt enabled
-     middle_emulation enabled
-     scroll_factor 1.4
-}
+#input "1739:30383:DLL075B:01_06CB:76AF_To" {
+#     natural_scroll enabled
+#     left_handed disabled
+#     pointer_accel 0.5
+#     tap enabled
+#     accel_profile adaptive
+#     dwt enabled
+#     middle_emulation enabled
+#     scroll_factor 1.4
+#}
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -51,10 +51,10 @@ floating_modifier $mod
 bindsym $mod+Return exec $term
 
 # start dmenu
-#bindsym $mod+d exec $menu
+bindsym $mod+d exec $menu
 
 # ffs
-bindsym $mod+d exec $TERMCMD --name=launcher -e "$SHELL -c 'sway-launcher'" for_window [app_id="^launcher$"] floating enable, border none 
+#bindsym $mod+d exec $TERMCMD --name=launcher -e "$SHELL -c 'sway-launcher'" for_window [app_id="^launcher$"] floating enable, border none 
 
 # kill focused window
 bindsym $mod+Shift+q kill
