@@ -51,3 +51,7 @@ alias view='vim -R'
 
 # homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+
+# personal man pages - https://github.com/pjungwir/manpj/
+export MANPATH="$MANPATH:$HOME/man"
+export MANSECT="1:n:l:8:3:2:3posix:3pm:3perl:5:4:9:6:7:jj"
