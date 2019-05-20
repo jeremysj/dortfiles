@@ -3,7 +3,7 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # pip should only run if there's a virtualenv activated
-export PIP_REQUIRE_VIRTUALENV=true
+# export PIP_REQUIRE_VIRTUALENV=true
 
 # cache pip installed packages to avoid downloading again
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
