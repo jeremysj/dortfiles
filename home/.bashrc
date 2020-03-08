@@ -7,6 +7,8 @@ case $- in
     *) return;;
 esac
 
+eval $(keychain --eval id_rsa)
+
 # check window size and update lines and columns as necessary
 shopt -s checkwinsize
 
@@ -54,3 +56,7 @@ export MANPAGER="most"
 
 # homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+
+alias ll='ls -alh'
+
+alias ls='ls --color'
