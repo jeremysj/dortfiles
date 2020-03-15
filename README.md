@@ -8,7 +8,9 @@ $HOME/.homesick/repos/homeshick/bin/homeshick clone jeremysj/dortfiles
 ```
 
 If you want to clobber **all** your settings run:
-`$HOME/.homesick/repos/homeshick/bin/homeshick clone -f jeremysj/dortfiles`
+```
+$HOME/.homesick/repos/homeshick/bin/homeshick clone -f jeremysj/dortfiles
+```
 
 That's it.
 
