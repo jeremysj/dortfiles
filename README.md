@@ -26,7 +26,7 @@ Show a little class and verify before you `git push`
 git remote -v
 ```
 
-Achtung! If you make changes and want to update things:
+Achtung! If you make changes and want to update things. I have had to `rm` the existing files e.g. `.tmux*` and do the below. Right or wrong? Who knows but this is what it took.
 Add the new files with git and push your changes.
 On the system you want to refresh your dortfiles run:
 ```
