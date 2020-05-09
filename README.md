@@ -26,6 +26,17 @@ Show a little class and verify before you `git push`
 git remote -v
 ```
 
+Achtung! If you make changes and want to update things:
+Add the new files with git and push your changes.
+On the system you want to refresh your dortfiles run:
+```
+homeshick refresh
+```
+Then:
+```
+homeshick link -f dortfiles
+```
+
 ### What's in this stupid repo?
 
 ### .config
