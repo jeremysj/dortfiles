@@ -1,4 +1,1 @@
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'flazz/vim-colorschemes'
-Plug 'vimwiki/vimwiki'
-Plug 'jeffkreeftmeijer/vim-dim'
+.homesick/repos/dortfiles/home/.vimrc.local.bundles
