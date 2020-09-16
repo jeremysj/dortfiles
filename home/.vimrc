@@ -193,7 +193,7 @@ set ruler
 set number
 
 let no_buffers_menu=1
-"silent! colorscheme molokai
+silent! colorscheme dracula
 
 set mousemodel=popup
 set t_Co=256
@@ -258,7 +258,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'dracula'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
