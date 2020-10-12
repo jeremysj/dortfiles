@@ -57,3 +57,6 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 alias ll='ls -alh'
 
 alias ls='ls --color'
+
+# DIR_COLORS frippery
+eval $(dircolors ~/.dircolors)
