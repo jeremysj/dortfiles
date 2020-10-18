@@ -5,7 +5,7 @@
 "*****************************************************************************
 let vimplug_exists=expand('~/.vim/autoload/plug.vim')
 
-let g:vim_bootstrap_langs = "c,go,html,javascript,perl,php,python,ruby,rust"
+let g:vim_bootstrap_langs = "go,html,javascript,python,rust"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
@@ -20,6 +20,11 @@ if !filereadable(vimplug_exists)
 
   autocmd VimEnter * PlugInstall
 endif
+
+" Syntax highlight
+" Default highlight is better than polyglot
+let g:polyglot_disabled = ['python']
+let python_highlight_all = 1
 
 " Required:
 call plug#begin(expand('~/.vim/plugged'))
@@ -37,7 +42,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'w0rp/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
@@ -57,12 +62,12 @@ endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 "" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-session'
 
 "" Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
 "" Color
 "Plug 'tomasr/molokai'
@@ -72,8 +77,8 @@ Plug 'honza/vim-snippets'
 "*****************************************************************************
 
 " c
-Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
-Plug 'ludwig/split-manpage.vim'
+" Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
+" Plug 'ludwig/split-manpage.vim'
 
 
 " go
@@ -91,18 +96,18 @@ Plug 'mattn/emmet-vim'
 
 " javascript
 "" Javascript Bundle
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'jelera/vim-javascript-syntax'
 
 
 " perl
 "" Perl Bundle
-Plug 'vim-perl/vim-perl'
-Plug 'c9s/perlomni.vim'
+" Plug 'vim-perl/vim-perl'
+" Plug 'c9s/perlomni.vim'
 
 
 " php
 "" PHP Bundle
-Plug 'arnaud-lb/vim-php-namespace'
+" Plug 'arnaud-lb/vim-php-namespace'
 
 
 " python
@@ -112,11 +117,11 @@ Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 
 " ruby
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-projectionist'
-Plug 'thoughtbot/vim-rspec'
-Plug 'ecomba/vim-ruby-refactoring'
+" Plug 'tpope/vim-rails'
+" Plug 'tpope/vim-rake'
+" Plug 'tpope/vim-projectionist'
+" Plug 'thoughtbot/vim-rspec'
+" Plug 'ecomba/vim-ruby-refactoring'
 
 
 " rust
@@ -599,10 +604,6 @@ let g:jedi#smart_auto_mappings = 0
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
 
-" Syntax highlight
-" Default highlight is better than polyglot
-let g:polyglot_disabled = ['python']
-let python_highlight_all = 1
 
 
 " ruby
