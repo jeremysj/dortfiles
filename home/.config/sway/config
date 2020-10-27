@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-font Cascadia Code 0
+font Cascadia Code 12
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -15,7 +15,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty -e tmux
+set $term terminator
 #set $term tilix
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
@@ -31,8 +31,16 @@ set $menu dmenu_path | bemenu -fn "Cascadia Code:pixelsize=12" | xargs swaymsg e
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output DP-2 pos 0 0 res 2560x1600
+
+######################### Second screen controls and output #####################
+# standard landscape right screen
+#output DP-1 pos 2560 0 res 1920x1080
+
+# portrait rotation of right screen
 output DP-1 pos 2560 0 res 1920x1080 transform 270
 exec swaymsg focus output DP-2
+
+################################################################################
 
 ### Idle configuration
 #
@@ -52,7 +60,7 @@ exec swayidle -w \
 #
 # Example configuration:
 #
-input * { xkb_options caps:escape }
+#input * { xkb_options caps:escape }
 
 #input 1267:32:Elan_TrackPoint {
 #    pointer_accel 0.8
@@ -80,7 +88,7 @@ input * { xkb_options caps:escape }
     bindsym $mod+p exec $menu
 
 	# lock screen
-    bindsym $mod+F12 exec swaylock -c 000000
+    bindsym $mod+ctrl+l exec swaylock -c 000000
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -148,16 +156,16 @@ input * { xkb_options caps:escape }
 
 # brightness
 
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym XF86MonBrightnessDown exec light -U 5
+# bindsym XF86MonBrightnessUp exec light -A 5
+# bindsym XF86MonBrightnessDown exec light -U 5
 
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+v splith
+    bindsym $mod+b splitv
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -218,7 +226,7 @@ bindsym $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position top
-	font Hack 12px
+	font Cascadia Code 12
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.

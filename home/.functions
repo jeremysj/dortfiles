@@ -203,6 +203,14 @@ man() {
 export MANPATH="$MANPATH:$HOME/man"
 export MANSECT="1:n:l:8:3:2:3posix:3pm:3perl:5:4:9:6:7:jj"
 
+# shutdown all vagrant instances in a directory
+vagrant() {
+  if [[ $@ == "halt all" ]]; then
+    command vagrant status | grep running | awk '{print $1}' | xargs -L 1 -t vagrant halt 
+  else
+    command vagrant "$@"
+  fi
+}
 
 # from jessfraz - not useful on **most** systems but occasionally
 # dell_monitor() {
