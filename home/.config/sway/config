@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-font Cascadia Code 12
+font Fira Sans Book 10
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -15,11 +15,11 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term terminator
+set $term alacritty
 #set $term tilix
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | bemenu -fn "Cascadia Code:pixelsize=12" | xargs swaymsg exec
+set $menu dmenu_path | bemenu -fn "Fira Sans Book:pixelsize=12" | xargs swaymsg exec
 
 ### Output configuration
 #
@@ -40,8 +40,12 @@ output DP-2 pos 0 0 res 2560x1600
 output DP-1 pos 2560 0 res 1920x1080 transform 270
 exec swaymsg focus output DP-2
 
+output "*" bg ~/Pictures/city_background.jpg fill
 ################################################################################
-
+############################Testing Gaps########################################
+gaps inner 4
+smart_gaps on
+smart_borders on
 ### Idle configuration
 #
 # Example configuration:
@@ -224,20 +228,59 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
+#bar {
+#    position top
+#	font Sans 12
+#
+#    # When the status_command prints a new line to stdout, swaybar updates.
+#    # The default just shows the current date and time.
+#    status_command ~/bin/waystatus
+#
+#	tray_output none
+#    colors {
+#        statusline #ffffff
+#        background #323232
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
+#}
+
+set $gnome-schema org.gnome.desktop.interface
+
+
+# Pulse Audio controls
+# run pactl list sinks
+# Floating windows
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+
+for_window [window_role="task_dialog|bubble|page-info|Preferences|pop-up"] floating enable
+for_window [window_role="Open Files"] floating enable sticky
+for_window [window_role="File Operation Progress"] floating enable sticky
+for_window [window_role="Save As"] floating enable
+
+#for_window [class="qBittorrent" window_role="pop-up"] floating enable
+#for_window [class="mtp-ng-qt" window_role="Open"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+#for_window [class="VirtualBox"] floating enable
+for_window [app_id="zoom"] floating enable
+
+# Sticky window
+for_window [instance="file_progress"]  sticky enable
+
+
+bindsym xf86audioraisevolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5% # Raise
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') -5% # Lower
+bindsym XF86AudioMute exec pactl set-sink-mute  $(pacmd list-sinks |awk '/* index:/{print $3}') toggle # Mute
+
+####################################swaybar####################################
 bar {
     position top
-	font Cascadia Code 12
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command ~/bin/waystatus
-
-	tray_output none
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+    swaybar_command waybar
 }
 
 exec clipman -d

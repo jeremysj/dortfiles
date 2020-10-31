@@ -1,5 +1,4 @@
-# ...
-# env:
+#env:
   # TERM env customization.
   #
   # If this property is not set, alacritty will set it to xterm-256color.
@@ -7,7 +6,6 @@
   # Note that some xterm terminfo databases don't declare support for italics.
   # You can verify this by checking for the presence of `smso` and `sitm` in
   # `infocmp xterm-256color`.
-background_opacity: 0.1
 
 window:
   # Window dimensions (changes require restart)
@@ -46,12 +44,12 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Windowed
+  #  startup_mode: Windowed
 
 scrolling:
   # maximum number of lines in the scrollback buffer. Specifying '0' will
   # disable scrolling.
-  history: 10000
+  history: 100000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -62,7 +60,7 @@ font:
   # The normal (roman) font face to use.
   # Style can be specified to pick a specific face.
   normal:
-    family: Cascadia Code
+    family: Hack
     style: Regular
     # family: "Fira Code"
     # family: "Source Code Pro"
@@ -70,7 +68,7 @@ font:
 
   # The bold font face
   bold:
-    family: Cascadia Code
+    family: Hack
     style: Bold
     # family: "Fira Code"
     # family: "Source Code Pro"
@@ -195,7 +193,7 @@ colors:
   #   `- { index: 16, color: '0xff00ff' }`
   #
   indexed_colors: []
-
+  background_opacity: 0
 # Visual Bell
 # ...
   key_bindings:
