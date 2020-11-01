@@ -45,7 +45,11 @@ output "*" bg ~/Pictures/city_background.jpg fill
 ############################Testing Gaps########################################
 gaps inner 4
 smart_gaps on
-smart_borders on
+#smart_borders on
+
+#######################Testing titlebar removal################################
+default_floating_border none
+default_border none
 ### Idle configuration
 #
 # Example configuration:
