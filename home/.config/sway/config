@@ -40,16 +40,16 @@ output DP-2 pos 0 0 res 2560x1600
 output DP-1 pos 2560 0 res 1920x1080 transform 270
 exec swaymsg focus output DP-2
 
-output "*" bg ~/Pictures/city_background.jpg fill
+output "*" bg ~/Pictures/cyan-space-nebula.jpg fill
 ################################################################################
 ############################Testing Gaps########################################
 gaps inner 4
 smart_gaps on
-#smart_borders on
+smart_borders on
 
 #######################Testing titlebar removal################################
 default_floating_border none
-default_border none
+default_border pixel 4
 ### Idle configuration
 #
 # Example configuration:
