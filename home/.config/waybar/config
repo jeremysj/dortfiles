@@ -1,11 +1,22 @@
 {
     "layer": "top",
     "position": "top",
+// If height isn't present it will be calculated dynamically
     "height": 20,
 
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
     "modules-center": [],
-    "modules-right": ["weather", "network", "pulseaudio", "clock", "tray"],
+    "modules-right": [
+        "idle_inhibitor",
+        "custom/weather",
+        "network",
+        "pulseaudio",
+        "clock",
+        "tray"
+    ],
     "sway/mode": {
         "format": " {}"
     },
