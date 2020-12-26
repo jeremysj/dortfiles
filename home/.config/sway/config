@@ -1,254 +1,252 @@
-# i3 config file (v4)
+# Default config for sway
 #
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
 
-set $mod Mod4
-set $term terminator
-#set $menu i3-menu-desktop
-set $barcmd swaybar
-set $lockcmd swaylock
+font Cascadia Code 0
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod1
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+set $term kitty -e tmux
+#set $term tilix
+# Your preferred application launcher
+# Note: it's recommended that you pass the final command to sway
+set $menu dmenu_path | bemenu -fn "Cascadia Code:pixelsize=12" | xargs swaymsg exec
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Monospace 13
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+output DP-2 pos 0 0 res 2560x1600
+output DP-1 pos 2560 0 res 1920x1080 transform 270
+exec swaymsg focus output DP-2
 
-# HiDPI for sway
-output eDP-1 scale 2
-#output eDP-1 pos 0 0 res 3200x1800
-#output DP-1 pos 1600 0 res 1920x1200
+### Idle configuration
+#
+# Example configuration:
+#
+exec swayidle -w \
+         timeout 300 'swaylock -f -c 000000' \
+         timeout 600 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
 
-# Inputs for sway
-# Reverse scroll
-#input "2:7:SynPS/2_Synaptics_TouchPad" {
-#    natural_scroll enabled
-#    left_handed disabled
-#    pointer_accel 0.9
+### Input configuration
+#
+# Example configuration:
+#
+input * { xkb_options caps:escape }
+
+#input 1267:32:Elan_TrackPoint {
+#    pointer_accel 0.8
 #}
-input "1739:30383:DLL075B:01_06CB:76AF_To" {
-     natural_scroll enabled
-     left_handed disabled
-     pointer_accel 0.5
-     tap enabled
-     accel_profile adaptive
-     dwt enabled
-     middle_emulation enabled
-     scroll_factor 1.4
-}
 
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+### Key bindings
+#
+# Basics:
+#
+#
+#
+    # start a terminal
+    bindsym $mod+Return exec $term
 
-# start a terminal
-bindsym $mod+Return exec $term
+    bindsym $mod+Tab workspace back_and_forth
 
-# start dmenu
-#bindsym $mod+d exec $menu
+    # kill focused window
+    bindsym $mod+Shift+c kill
 
-# ffs
-bindsym $mod+d exec $TERMCMD --name=launcher -e "$SHELL -c 'sway-launcher'" for_window [app_id="^launcher$"] floating enable, border none 
+    # start your launcher
+    bindsym $mod+p exec $menu
 
-# kill focused window
-bindsym $mod+Shift+q kill
+	# lock screen
+    bindsym $mod+F12 exec swaylock -c 000000
 
-# spotify: no border
-for_window [class="^Spotify$"] border none
-for_window [class="^Spotify Premium$"] border none
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
 
-# skype, steam, wine: float Gimp
-for_window [class="Code"] floating enable
-# for_window [class="Firefox"] floating enable
-for_window [class="Gimp"] floating enable
-#for_window [class="google-chrome"] floating enable
-#for_window [class="Google-chrome"] floating enable
-for_window [class="Keybase"] floating enable
-for_window [class="Neoman"] floating enable
-for_window [class="NES"] floating enable
-for_window [class="Pidgin"] floating enable
-for_window [class="Portal"] floating enable
-for_window [class="RStudio"] floating enable
-for_window [class="Skype"] floating enable
-for_window [class="Slack"] floating enable
-for_window [class="Steam"] floating enable
-for_window [class="Tor Browser"] floating enable
-for_window [class="Virt-viewer"] floating enable
-for_window [class="VirtualBox"] floating enable
-for_window [class="vlc"] floating enable
-for_window [class="Wine"] floating enable
-for_window [class="Wireshark"] floating enable
+    # reload the configuration file
+    bindsym $mod+Shift+r reload
 
-# lock screen
-bindsym $mod+l exec $lockcmd -c 111111
+    # exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+semicolon focus right
+    # _move_ the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # switch to workspace
+    bindsym $mod+1 workspace 1
+    bindsym $mod+2 workspace 2
+    bindsym $mod+3 workspace 3
+    bindsym $mod+4 workspace 4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
+    bindsym $mod+7 workspace 7
+    bindsym $mod+8 workspace 8
+    bindsym $mod+9 workspace 9
+    bindsym $mod+0 workspace 10
+    # move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace 1
+    bindsym $mod+Shift+2 move container to workspace 2
+    bindsym $mod+Shift+3 move container to workspace 3
+    bindsym $mod+Shift+4 move container to workspace 4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
 
-# move to monitor
-bindsym $mod+Shift+Left move workspace to output left
-bindsym $mod+Shift+Right move workspace to output right
+# brightness
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
 
-# alternatively, you can use the cursor keys:
-# bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-# bindsym $mod+Shift+Right move right
+    # Switch the current container between different layout styles
+    bindsym $mod+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
 
-# split in horizontal orientation
-bindsym $mod+bar split h
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
 
-# split in vertical orientation
-bindsym $mod+minus split v
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+    # move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
-# switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-
-# audio controls
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+ #increase sound volume
-bindsym XF86AudioLowerVolume exec amixer set Master 5%- #decrease sound volume
-bindsym XF86AudioMute exec amixer set Master 1+ toggle # mute sound
-bindsym XF86AudioMicMute exec amixer set Capture toggle # mute mic
-
-# screen brightness controls
-bindsym XF86MonBrightnessUp exec sudo light -A 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec sudo light -U 5 # decrease screen brightness
-
-# Screenshots
-# Screenshot fullscreen
-bindsym Print exec "scrot -q 100 ${HOME}'/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e ${HOME}'/google-cloud-sdk/bin/gsutil cp -a public-read $f gs://misc.j3ss.co/screenshots/ && echo https://misc.j3ss.co/screenshots/$n | xclip -i -selection clipboard'"
-# Screenshot fullscreen, sway
-#bindsym Shift+Print exec "swaygrab ${HOME}/Pictures/Screenshots/$(date '+%Y-%m-%d-%H-%M-%S').png"
-# Screenshot with selection
-bindsym $mod+Print exec "sleep 0.4; scrot -q 100 -s ${HOME}'/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e ${HOME}'/google-cloud-sdk/bin/gsutil cp -a public-read $f gs://misc.j3ss.co/screenshots/ && echo https://misc.j3ss.co/screenshots/$n | xclip -i -selection clipboard'"
-# Screenshot capture, sway
-#bindsym Shift+Print exec "swaygrab -c ${HOME}/Pictures/Screenshots/$(date '+%Y-%m-%d-%H-%M-%S').webm"
-# Screenshot current focused window
-bindsym Shift+Print exec "scrot -q 100 -u ${HOME}'/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png' -e ${HOME}'/google-cloud-sdk/bin/gsutil cp -a public-read $f gs://misc.j3ss.co/screenshots/ && echo https://misc.j3ss.co/screenshots/$n | xclip -i -selection clipboard'"
-# Screenshot current focused window, sway
-#bindsym Shift+Print exec "swaygrab --focused ${HOME}/Pictures/Screenshots/$(date '+%Y-%m-%d-%H-%M-%S').png"
-
-# network
-exec nm-applet
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exit
-
-# resize window (you can also use the mouse for that)
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
 
-# i3status bar config
-#bar {
-#	font pango:monospace 12
-#	status_command $barcmd --config ~/.i3/status.conf
-#}
-
-# auto run commands
-# set background
-# use the same background as slim (login manager)
-#exec --no-startup-id feh --bg-fill ${HOME}/Pictures/cyan-space-nebula.jpg
-
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
 bar {
-    position bottom
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
+    position top
+	font Hack 12px
 
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command ~/bin/waystatus
+
+	tray_output none
     colors {
         statusline #ffffff
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
+    }
 }
-}
-# Sway backgroud
-output "*" background ${HOME}/Pictures/cyan-space-nebula.jpg fill
 
-# run the merge for good colors
-exec xrdb -merge $HOME/.Xresources
-exec xrdb -merge $HOME/.Xdefaults
+exec clipman -d
+bindsym $mod+Insert exec clipman -s
+
+# xwayland disable
+
+include /etc/sway/config.d/*
+#default_border pixel 1
+
+workspace 1 output DP-2
+workspace 2 output DP-2
+workspace 3 output DP-2
+workspace 4 output DP-2
+workspace 5 output DP-2
+workspace 6 output DP-1
+workspace 7 output DP-1
+workspace 8 output DP-1
+workspace 9 output DP-1
+workspace 10 output DP-1

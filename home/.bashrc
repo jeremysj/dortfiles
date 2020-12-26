@@ -1,5 +1,12 @@
 # .bashrc
 [[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
+#function _update_ps1() {
+#    PS1="$(/usr/bin/powerline-go -error $?)"
+#}
+
+#if [ "$TERM" != "linux" ] && [ -f "$GOPATH/bin/powerline-go" ]; then
+#        PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+#fi
 
 # If not running interactively, don't do anything
 case $- in
@@ -7,7 +14,7 @@ case $- in
     *) return;;
 esac
 
-#eval $(keychain --eval id_rsa telinit_id_rsa)
+eval $(keychain --eval id_rsa telinit_id_rsa)
 
 # check window size and update lines and columns as necessary
 shopt -s checkwinsize
