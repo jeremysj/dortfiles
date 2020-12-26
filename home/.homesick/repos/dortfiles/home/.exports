@@ -5,6 +5,8 @@ export GOPATH=$HOME/go
 # GOPATH
 export GOPATH=$HOME/go
 export PATH=~/go/bin:$PATH
+# npm fuckery
+NPM_PACKAGES=$HOME/.npm-packages
 
 export WORKON_HOME=~/Envs
 
