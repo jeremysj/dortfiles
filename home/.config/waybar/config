@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
 // If height isn't present it will be calculated dynamically
-    "height": 20,
+//    "height": 20,
 
     "modules-left": [
         "sway/workspaces",
@@ -123,8 +123,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": "﯈"
         },
         "tooltip": false
     },
