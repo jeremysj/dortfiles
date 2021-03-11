@@ -7,3 +7,4 @@ let g:airline_powerline_fonts = 1
 "  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 "augroup END
 "autocmd BufWritePost *.py call flake8#Flake8()
+Plug 'vimwiki/vimwiki'

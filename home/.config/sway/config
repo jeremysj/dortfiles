@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 
-font Fira Sans 12
+font Ubuntu 12
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -15,11 +15,11 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term alacritty
+set $term gnome-terminal
 #set $term tilix
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | bemenu -fn "Fira Sans:pixelsize=13" | xargs swaymsg exec
+set $menu dmenu_path | bemenu -fn "Ubuntu:pixelsize=12" | xargs swaymsg exec
 
 ### Output configuration
 #
@@ -42,16 +42,16 @@ set $menu dmenu_path | bemenu -fn "Fira Sans:pixelsize=13" | xargs swaymsg exec
 #output DP-1 pos 2560 0 res 1920x1080 transform 270
 #exec swaymsg focus output DP-2
 
-output "*" bg ~/Pictures/wallpaper.png fill
+output "*" bg ~/Pictures/wall01.png fill
 ################################################################################
 ############################Testing Gaps########################################
-gaps inner 4
+gaps inner 2
 smart_gaps on
 smart_borders on
 
 #######################Testing titlebar removal################################
 default_floating_border none
-default_border pixel 4
+default_border pixel 2
 ### Idle configuration
 #
 # Example configuration:
@@ -166,8 +166,8 @@ exec swayidle -w \
 
 # brightness
 
-# bindsym XF86MonBrightnessUp exec light -A 5
-# bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
+bindsym XF86MonBrightnessDown exec light -U 5
 
 # Layout stuff:
 #
@@ -205,6 +205,9 @@ exec swayidle -w \
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+
+    # sometimes you need a file manager
+    bindsym $mod+shift+n exec caja
 #
 # Resizing containers:
 #
@@ -289,7 +292,7 @@ bar {
     swaybar_command waybar
 }
 
-input "1739:30383:DLL075B:01_06CB:76AF_To" {
+input "1739:30383:DLL075B:01_06CB:76AF_Touchpad" {
      natural_scroll enabled
      left_handed disabled
      pointer_accel 0.5
@@ -297,14 +300,14 @@ input "1739:30383:DLL075B:01_06CB:76AF_To" {
      accel_profile adaptive
      dwt enabled
      middle_emulation enabled
-     scroll_factor 1.4
+     scroll_factor 1.0
 }
 exec clipman -d
 bindsym $mod+Insert exec clipman -s
 
 # xwayland disable
 
-include /etc/sway/config.d/*
+#include /etc/sway/config.d/*
 #default_border pixel 1
 #workspace 1 output eDP-1
 #workspace 2 output eDP-1
@@ -326,3 +329,6 @@ include /etc/sway/config.d/*
 #workspace 8 output DP-1
 #workspace 9 output DP-1
 #workspace 10 output DP-1
+#
+##### Autolaunch ###########
+#exec nm-applet

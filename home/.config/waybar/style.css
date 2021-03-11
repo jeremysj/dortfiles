@@ -1,9 +1,9 @@
-@import "./base16-waybar/colors/base16-default-dark.css";
+@import "./base16-waybar/colors/base16-dracula.css";
 
 * {
 border: none;
 border-radius: 0;
-font-family: Hack, Fira Sans Book, Roboto;
+font-family: Roboto, Hack, Fira Sans Book, Roboto;
 transition: none;
 box-shadow: none;
 }
@@ -88,7 +88,6 @@ window#waybar.hidden {
 #clock {
   margin-left: 12px;
   margin-right: 4px;
-  background-color: transparent;
 }
 
 #temperature.critical {
