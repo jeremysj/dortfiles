@@ -263,7 +263,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-"let g:airline_theme = 'dracula'
+let g:airline_theme = 'dracula'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1

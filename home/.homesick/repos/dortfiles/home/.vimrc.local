@@ -8,3 +8,4 @@ let g:airline_powerline_fonts = 1
 "augroup END
 "autocmd BufWritePost *.py call flake8#Flake8()
 Plug 'vimwiki/vimwiki'
+Plug 'hashivim/vim-terraform'
