@@ -8,7 +8,7 @@ font Ubuntu 12
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod1
+set $mod Mod4
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -44,7 +44,7 @@ set $menu j4-dmenu-desktop --dmenu='BEMENU_BACKEND=wayland bemenu -m -1 -i --nb 
 #output DP-1 pos 2560 0 res 1920x1080 transform 270
 #exec swaymsg focus output DP-2
 
-output "*" bg ~/Pictures/wallpaper.png fill
+output "*" bg ~/Pictures/f29.png fill
 ################################################################################
 ############################Testing Gaps########################################
 gaps inner 2

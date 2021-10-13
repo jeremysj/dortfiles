@@ -46,3 +46,5 @@ export VAGRANT_DEFAULT_PROVIDER=virtualbox
 #export QT_DEVICE_PIXEL_RATIO=2
 #export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 #MANROFFOPT="-c"
+# flatpak fuckery! yeah!
+export XDG_DATA_DIRS=/var/lib/flatpak/app/:$XDG_DATA_DIRS
