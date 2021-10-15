@@ -17,6 +17,7 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 #set $term tilix
+#set $term konsole --hide-menubar
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 #set $menu dmenu_path | bemenu -fn "Ubuntu:pixelsize=12" | xargs swaymsg exec
