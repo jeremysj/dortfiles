@@ -12,7 +12,7 @@ endif
 
 let g:vim_bootstrap_langs = "go,javascript,python"
 let g:vim_bootstrap_editor = "vim"				" nvim or vim
-let g:vim_bootstrap_theme = "dracula"
+let g:vim_bootstrap_theme = "molokai"
 let g:vim_bootstrap_frams = ""
 
 if !filereadable(vimplug_exists)
@@ -45,11 +45,12 @@ Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
+Plug 'mrk21/yaml-vim'
 Plug 'dense-analysis/ale'
 Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'dracula/vim', { 'as': 'dracula' }
+"Plug 'dracula/vim', { 'as': 'dracula' }
 
 
 if isdirectory('/usr/local/opt/fzf')
