@@ -7,7 +7,9 @@ case $- in
     *) return;;
 esac
 
+if [ $SSH_TTY ]; then
 eval $(keychain --eval id_rsa telinit_id_rsa)
+fi
 
 # check window size and update lines and columns as necessary
 shopt -s checkwinsize

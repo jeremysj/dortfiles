@@ -15,7 +15,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term gnome-terminal
+set $term alacritty
 #set $term tilix
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
@@ -42,7 +42,7 @@ set $menu dmenu_path | bemenu -fn "Ubuntu:pixelsize=12" | xargs swaymsg exec
 #output DP-1 pos 2560 0 res 1920x1080 transform 270
 #exec swaymsg focus output DP-2
 
-output "*" bg ~/Pictures/wall01.png fill
+output "*" bg ~/Pictures/Aqua-Graphite.jpg fill
 ################################################################################
 ############################Testing Gaps########################################
 gaps inner 2
@@ -292,16 +292,16 @@ bar {
     swaybar_command waybar
 }
 
-input "1739:30383:DLL075B:01_06CB:76AF_Touchpad" {
-     natural_scroll enabled
-     left_handed disabled
-     pointer_accel 0.5
-     tap enabled
-     accel_profile adaptive
-     dwt enabled
-     middle_emulation enabled
-     scroll_factor 1.0
-}
+#input "1739:30383:DLL075B:01_06CB:76AF_Touchpad" {
+#     natural_scroll enabled
+#     left_handed disabled
+#     pointer_accel 0.5
+#     tap enabled
+#     accel_profile adaptive
+#     dwt enabled
+#     middle_emulation enabled
+#     scroll_factor 1.0
+#}
 exec clipman -d
 bindsym $mod+Insert exec clipman -s
 
