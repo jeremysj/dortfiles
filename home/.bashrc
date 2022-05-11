@@ -37,7 +37,7 @@ PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 export PATH
 
 # this is more useful than I expected
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
 
 # bring in the cruft!
 for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
