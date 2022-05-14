@@ -20,7 +20,7 @@ esac
 
 <<<<<<< HEAD
 if [ $SSH_TTY ]; then
-eval $(keychain --eval id_rsa telinit_id_rsa)
+eval $(keychain --eval id_rsa telinit_id_rsa id_ed25519_jsjohns id_ed25519_telinit)
 fi
 =======
 #eval $(keychain --eval id_rsa telinit_id_rsa)

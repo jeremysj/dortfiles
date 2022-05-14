@@ -115,6 +115,14 @@ draw_bold_text_with_bright_colors: true
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
 # custom_cursor_colors: false
+#
+cursor:
+  style:
+    shape: Beam
+    blinking: Always
+  blink_interval: 750
+  unfocused_hollow: true
+  thickness: 0.10
 
 # Colors (Dracula)
 colors:
