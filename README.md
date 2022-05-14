@@ -2,7 +2,7 @@
 
 ## Warning - you don't want to use this repo. It's bad, ugly and stupid.
 ```
-git clone https://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
+git clone git://github.com/andsens/homeshick.git $HOME/.homesick/repos/homeshick
 printf '\nsource "$HOME/.homesick/repos/homeshick/homeshick.sh"' >> $HOME/.bashrc
 $HOME/.homesick/repos/homeshick/bin/homeshick clone jeremysj/dortfiles
 ```
