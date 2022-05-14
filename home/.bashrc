@@ -8,7 +8,7 @@ case $- in
 esac
 
 if [ $SSH_TTY ]; then
-eval $(keychain --eval id_rsa telinit_id_rsa)
+eval $(keychain --eval id_rsa telinit_id_rsa id_ed25519_jsjohns id_ed25519_telinit)
 fi
 
 # check window size and update lines and columns as necessary
