@@ -7,8 +7,9 @@ case $- in
     *) return;;
 esac
 
-eval $(keychain --eval id_rsa telinit_id_rsa)
-
+if [ -n "$SSH_CONNECTION" ]; then
+    eval $(keychain --eval id_rsa telinit_id_rsa id_ed25519_jsjohns id_ed25519_telinit)
+fi
 # check window size and update lines and columns as necessary
 shopt -s checkwinsize
 
@@ -35,7 +36,7 @@ PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 export PATH
 
 # this is more useful than I expected
-eval $(thefuck --alias)
+#eval $(thefuck --alias)
 
 # bring in the cruft!
 for file in ~/.{aliases,functions,path,dockerfunc,extra,exports}; do
@@ -67,4 +68,13 @@ parse_git_branch() {
 
 export PS1="\u@\h \[\e[32m\]\w \[\e[91m\]\$(parse_git_branch)\[\e[00m\]$ "
 
-#eval "$(starship init bash)"
+# Make less display colors
+# from: https://wiki.archlinux.org/index.php/Color_output_in_console#man
+export LESS_TERMCAP_mb=$'\e[1;31m'     # begin bold
+export LESS_TERMCAP_md=$'\e[1;33m'     # begin blink
+export LESS_TERMCAP_so=$'\e[01;44;37m' # begin reverse video
+export LESS_TERMCAP_us=$'\e[01;37m'    # begin underline
+export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink
+export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
+export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
+export GROFF_NO_SGR=1                  # for konsole and gnome-terminal]]]]]]]'
